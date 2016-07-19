@@ -1,5 +1,7 @@
+var avg, rate = [];
 function showAvg() {
-	var i, j, radioInput, score, rate = [], k = 0, avg = 0;
+	var i, j, radioInput, score, k = 0;
+	avg = 0;
 	for (i = 1; i <= 3; i++) {
 		for (j = 1; j <= 5; j++) {
 			title = i.toString();
@@ -26,9 +28,20 @@ function showAvg() {
 			radioInput.style.color = "#aeabab";
 		}
 	}
-	var msg = 'Average (' + avg + ')';
-	document.getElementById("message").innerHTML = msg;
+	if (avg > 0) {
+		var msg = 'Average (' + avg + ')';
+		document.getElementById("message").innerHTML = msg;
+	}
 }
 function clearForm() {
 	window.location.reload();
+}
+function submitForm() {
+	showAvg();
+	if(rate.length == 3) {
+		alert("Rating successful. Thank you for the response");
+	}
+	else {
+		alert("Please provide your rating");
+	}
 }
